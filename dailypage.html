@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NAVER WEBTOON</title>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+	<style>
+		body {
+			font-family: 'Nanum Gothic', sans-serif;
+			box-sizing: border-box;
+		}
+		body a {
+			text-decoration: none;
+		}
+		/*네비바*/
+		.nav {
+			display: inline-block;
+			padding-left: 11vw;
+			padding-right: 11vw;
+			margin-top: -8px;
+			margin-bottom: -8px;
+			font-size: 17px;
+			font-weight: 700;
+			color: #ffffff;
+			background-color: #00d564;
+		}
+		.logo {
+			display: inline-block;
+			padding-top: 3%;
+		}
+		.logo h1{
+			color: #fffffc;
+			font-size: 20px;
+			font-weight: 900;
+			line-height: 1;
+			text-shadow: -1px 0 #ffffff, 1px 0 #ffffff;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.logo p {
+			margin-top: 2%;
+			color: #fffffc;
+			font-size: 30px;
+			font-weight: 700;
+			line-height: 1;
+			display: inline-block;
+			vertical-align: middle;	
+		}
+
+		.nav-link {
+			padding-left: auto;
+			padding-right: auto;
+			text-align: center;
+		}
+		.input-group {
+			margin-left: 11%;
+			width: 30%;
+		}
+		/*콘텐츠*/
+		.toon {
+			border-radius: 0.3vw;	
+			display: block;
+			box-shadow : 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+		}
+
+		.toon-img { 
+			border-top-right-radius: 0.3vw;
+			border-top-left-radius: 0.3vw;		
+			display: block;
+		}
+		.toon-p {
+			background-color: #ffffff;
+			height: 7vw;
+			white-space: nowrap;
+			overflow: hidden;
+			padding-top: 0.5vw;
+			padding-bottom: 3%;
+			padding-left: 3%;
+			margin-bottom: 20px;
+		}
+		.t-help {
+			height: 3vw;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.t-name {
+			margin-left: 12%;
+			height: 3vw;
+			margin-right: 15px;
+			display: inline-block;
+			vertical-align: top;
+			width: 50%;
+		}
+		.t-artist {
+			height: 3vw;
+			vertical-align: top;
+			display: inline-block;
+			width: 40%;
+		}
+
+
+		.t-name h4 {
+			display: inline-block;
+			vertical-align: bottom;
+			font-weight: 900;
+			line-height: 1.2;
+			font-size: 1.5vw;
+			color: #848484;
+			margin-bottom: 10px;
+		}
+		.t-artist h6 {
+			display: inline-block;
+			vertical-align: bottom;
+			font-weight: 100;
+			line-height: 1.2;
+			margin-bottom: 10px;
+			font-size: 0.8vw;
+			color: #848484;
+		}
+		.do_con .toon-p {
+			height: 6vw;
+		}
+		.do_con .t-help {
+			height: 3vw;
+		}
+		.do_con .t-name {
+			margin-left: 1%;
+			height: 3vw;
+			margin-right: 15px;
+			display: inline-block;
+			vertical-align: top;
+			width: 50%;
+		}
+		.do_con .t-artist {
+			height: 3vw;
+		}
+		.do_con .t-name h4 {
+
+			font-size: 1vw;
+			margin-left: -10%;
+		}
+		.do_con .t-artist h6 {
+			font-size: 0.6vw;
+		}
+		.over {
+
+			padding-top: 1vw;
+			margin-left: auto;
+			margin-right: auto;
+			width: 78%;
+			overflow-x: scroll;
+		
+		}
+		.over::-webkit-scrollbar{ 
+			display: none; 
+		}
+
+		.inover{
+			white-space: nowrap;
+		}
+		.con {
+			margin-right: 16px;
+			width: 17.6%;
+			display: inline-block;
+		}
+		.con:hover {
+			width: 19%;
+		}
+		.do_con {
+			margin-right: 16px;
+			width: 11.8%;
+			display: inline-block;
+		}
+		.do_con:hover {
+			width: 13%;
+		}
+		.toon_img { 
+			border-top-right-radius: 0.3vw;
+			border-top-left-radius: 0.3vw;		
+			display: inline-block;
+		}
+		.no_toon-img { 
+			border-radius: 0.3vw;		
+			display: inline-block;
+		}
+		.nt_help {
+			height: 10vw;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.nc_toon {
+			margin-right: 16px;
+			width: 17.6%;
+			display: inline-block;
+			object-fit: cover;
+		}
+		.nc_toon:hover {
+			width: 18.3%;
+		}
+		.no_con {	
+			object-fit:cover
+			width: 100%;
+			display: block;
+			margin-bottom: 16px;
+			box-shadow : 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+		}
+		.nt-ex {
+			overflow: hidden;
+			display: block;
+			width: 100%;
+			box-shadow : 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+		}
+		.nt-bottom {
+			vertical-align: 0%;
+			width: 30%;
+			display: inline-block;
+		}
+		.nt-bottom img { 
+			border-bottom-right-radius: 0.3vw;
+			border-bottom-left-radius: 0.3vw;		
+		}
+		.nt-name {
+			margin-top: 1vw;
+			width: 140px;
+			display: inline-block;
+			margin-left: 0.5vw;
+			
+		}
+		.nt-name h4 {
+			display: inline-block;
+			font-weight: 900;
+			line-height: 1;
+			font-size: 1.5vw;
+			color: #848484;
+		}
+		.nt-name h6 {
+
+			margin-top: 0.3vw;
+			margin-left: 0.35vw;
+			display: inline-block;	
+			font-weight: 100;
+			line-height: 1;
+			font-size: 0.8vw;
+			color: #848484;
+
+		}
+		.nt-name h5 {
+
+			display: inline-block;
+			font-weight: 100;
+			line-height: 1;
+			font-size: 0.6vw;
+			color: #848484;
+			margin-right: 200px;
+
+		}
+		.title {
+			margin-left: 11%;
+		}
+		.title h6 {
+			margin-top: 5vw;
+			font-weight: 100;
+			line-height: 0;
+			font-size: 0.8em;
+			color: #81c69e;
+		}
+		.title h2 {
+			margin-top: 10px;
+			margin-bottom: 1vw;
+			font-weight: 900;
+			line-height: 1;
+			font-size: 1.7em;
+			color: #00d564;
+		}
+		.mid {
+			margin-top: 7vw;
+			margin-bottom: 10vw;
+			text-align: center;
+			font-weight: 100;
+			line-height: 0;
+			font-size: 1.8em;
+			color: #848484;
+		}
+		.daily {
+			margin-top: 3vw;
+			margin-left: 10%;
+			margin-right: 10%;
+		}
+		.daily .t-name {
+			margin-left: 0;
+			margin-left: 0.1vw;
+			width: 42%;
+			font-size: 1vw;
+		}
+		.daily .t-artist {
+			font-size: 0.5vw;
+		}
+		.small {
+			margin-top: 1vw;
+			font-size: 0.8vw;
+			line-height: 1;
+			text-align: center;
+			margin-bottom: 5vw;
+			color: #9a9a9a;
+		}
+		.small a {
+			text-decoration: none;
+			color: #9a9a9a;
+		}
+		.small1 a {
+			text-decoration: none;
+			color: #424242;
+		}
+	
+		.small1
+		{	margin-left: 2vw;
+			display: inline-block;
+			margin-top: 3vw;
+			font-size: 1.3vw;
+			line-height: 1;
+			margin-bottom: 0vw;
+			color: #424242;
+		}
+			.select {
+			font-weight: 900;
+			color: #00d564;
+		}
+		.sm {
+			display: inline-block;
+			margin-left: 10px;
+			margin-right: 10px;
+			text-decoration: none;
+		}	
+		.line {
+			margin-top: 3vw;
+			background-color: #878d91;
+			margin-left: 11%;
+			margin-right: 11%;
+			height : 1px;
+		}
+		.sm1  {
+			margin-top: 1vw;
+			margin-left: 11%;
+			display: inline-block;
+		}
+		.sm1 h6 {
+	
+			font-weight: 900;
+			line-height: 1;
+			font-size: 2em;
+			color: #00d564;
+		}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid nav">
+  	<div class="help"></div>
+    <a class="navbar-brand" href="./index.html">
+    	<div class="logo">
+		<h1>NAVER</h1><p> 만화</p>
+		</div></a>
+
+    <div class="input-group">
+      <input type="text" class="form-control me-2" type="search" placeholder="찾는 작품이 있으신가요?" aria-label="Search">
+    </div>
+
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="rig">
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        
+        <a class="nav-link" aria-current="page" href="./index.html">홈</a>
+        <a class="nav-link l">|</a>
+        <a class="nav-link active" href="./dailypage.html">연재만화</a>
+        <a class="nav-link l">|</a>
+        <a class="nav-link" href="#">완결만화</a>
+        <a class="nav-link l">|</a>
+        <a class="nav-link" href="#">베스트도전</a>
+        <a class="nav-link l">|</a>
+        <a class="nav-link" href="#">도전만화</a>
+     	 </div>
+    	</div>
+    </div>
+  </div>
+</nav>
+<div class="sm1">
+<h6>요일별웹툰</h6>
+</div>
+<div class="small1">
+			<div class="sm select"><a href="./detail.html">월</a></div>|
+			<div class="sm"><a href="#">화</a></div>|
+			<div class="sm"><a href="#">수</a></div>|
+			<div class="sm"><a href="#">목</a></div>|
+			<div class="sm"><a href="#">금</a></div>|
+			<div class="sm"><a href="#">토</a></div>|
+			<div class="sm"><a href="#">일</a></div>
+	</div>
+<!-- 웹툰이어보기 -->
+<div class="title">
+<h6>오늘의 새로운 이야기</h6>
+<h2>이어보는 웹툰</h2>
+</div>
+<div class="over">
+		<div class="inover">
+		<div class="con">
+			<a href="./detail.html" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/thumbnail/thumbnail_IMAG10_9a752bec-9ebd-4214-9449-28cf4defc650.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>신의탑</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>SIU</h6></div>
+
+				</div></a>
+			</div>
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG10_a2297504-4912-4c7e-a5a8-524d6fc77103.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>참교육</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>채용택<br>한가람</h6></div>
+
+				</div></a>
+			</div>
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/648419/thumbnail/thumbnail_IMAG10_1421195d-13be-4cde-bcf9-0c78d51c5ea3.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>뷰티풀<br>군바리</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>설이<br>윤성원</h6></div>
+
+				</div></a>
+			</div>
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/749632/thumbnail/thumbnail_IMAG10_8e2f81f2-e0c1-4e7a-8d34-ddfb10635ac5.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>파이게임</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>배진수</h6></div>
+
+				</div></a>
+			</div>
+			
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/602910/thumbnail/thumbnail_IMAG10_8914c548-d69d-45d6-8008-bbc129e637c2.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>윈드<br>브레이커</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>조용석</h6></div>
+
+				</div></a>
+			</div>
+			
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/654774/thumbnail/thumbnail_IMAG10_c966c4af-f642-4531-b39b-74c284034d9e.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>소녀의<br>세계</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>모랑지</h6></div>
+										
+				</div></a>
+			</div>
+			
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/728750/thumbnail/thumbnail_IMAG10_d991c7c7-8068-48ce-b03b-54d4df8c8197.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>장씨세가<br>호위무사</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>조형근<br>김인호</h6></div>
+				
+				</div></a>
+			</div>
+
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/769317/thumbnail/thumbnail_IMAG10_09200bd8-ea5b-465f-aa55-f51256bfe812.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>삼매경</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>이원식<br>꿀찬</h6></div>
+					
+				</div></a>
+			</div>
+		</div>
+	</div>	
+
+<div class="title">
+<h6>오늘의</h6>
+<h2>모든 웹툰</h2>
+</div>
+<div class="daily">
+	<div class="container">
+	<div class="row">
+
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="./detail.html" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/thumbnail/thumbnail_IMAG10_9a752bec-9ebd-4214-9449-28cf4defc650.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>신의탑</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>SIU</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG10_a2297504-4912-4c7e-a5a8-524d6fc77103.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>참교육</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>채용택<br>한가람</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/648419/thumbnail/thumbnail_IMAG10_1421195d-13be-4cde-bcf9-0c78d51c5ea3.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>뷰티풀<br>군바리</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>설이<br>윤성원</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/749632/thumbnail/thumbnail_IMAG10_8e2f81f2-e0c1-4e7a-8d34-ddfb10635ac5.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>파이게임</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>배진수</h6></div>
+
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/602910/thumbnail/thumbnail_IMAG10_8914c548-d69d-45d6-8008-bbc129e637c2.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>윈드<br>브레이커</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>조용석</h6></div>
+
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/654774/thumbnail/thumbnail_IMAG10_c966c4af-f642-4531-b39b-74c284034d9e.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>소녀의<br>세계</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>모랑지</h6></div>
+										
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/728750/thumbnail/thumbnail_IMAG10_d991c7c7-8068-48ce-b03b-54d4df8c8197.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>장씨세가<br>호위무사</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>조형근<br>김인호</h6></div>
+				
+				</div></a>
+			</div>
+<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/769317/thumbnail/thumbnail_IMAG10_09200bd8-ea5b-465f-aa55-f51256bfe812.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>삼매경</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>이원식<br>꿀찬</h6></div>
+					
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/773419/thumbnail/thumbnail_IMAG10_c5ecffe4-ccb5-4595-bae7-100739f5286b.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>신입일기</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>자까</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/759940/thumbnail/thumbnail_IMAG10_7abdbbb8-b81c-46ec-8a35-3a9730fc02fa.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>만렙돌파</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>성불예정,<br>홍실/미노</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/739115/thumbnail/thumbnail_IMAG10_a206c88b-0b8c-461d-b9e0-76ae8f6ee8ff.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>앵무살수</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>김성진</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/703849/thumbnail/thumbnail_IMAG10_097cd002-38ad-47d0-99b8-05d4b2044a9d.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>요리GO</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>HO9</h6></div>
+
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/730174/thumbnail/thumbnail_IMAG10_df034319-e76a-42d5-a3dd-5412c67f29d4.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>칼가는<br>소녀</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>오리</h6></div>
+
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/654774/thumbnail/thumbnail_IMAG10_c966c4af-f642-4531-b39b-74c284034d9e.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>유일무이<br>로맨스</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>두부</h6></div>
+										
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/758671/thumbnail/thumbnail_IMAG10_052d1275-3145-4c1a-b7ab-af39cf8a6599.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>황제와의<br>하룻밤</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>예영,차승현<br>/INUS</h6></div>
+				
+				</div></a>
+			</div>
+<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/21815/thumbnail/thumbnail_title_21815_83x90.gif" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>히어로<br>메이커</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>빤쓰</h6></div>
+					
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/733074/thumbnail/thumbnail_IMAG10_0741d1f6-2bae-474b-87ae-6f1a69988808.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>백수세끼</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>치즈</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/752414/thumbnail/thumbnail_IMAG10_edfdf4b2-914c-4864-8966-7b65d52994e9.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>리턴 투 <br>플레이어</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>인덱스,<br>엄키/세혼</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/768536/thumbnail/thumbnail_IMAG10_b85519b9-9322-450c-93a1-27c65f9b2e53.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>잔불의<br>기사</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>환댕</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/716857/thumbnail/thumbnail_IMAG10_fb5f2776-982c-4891-b844-e617a907d5c9.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>오늘의<br>순정망화</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>손하기</h6></div>
+
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/741891/thumbnail/thumbnail_IMAG10_0493a07d-a793-44e7-b6f8-7c2439cc61c9.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>결혼생활<br>그림일기</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>은꼼지</h6></div>
+
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/768534/thumbnail/thumbnail_IMAG10_aa734331-7228-4c02-9276-fbb7fcd27ef8.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>수영<br>만화일기</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>해오</h6></div>
+										
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/772734/thumbnail/thumbnail_IMAG10_845ee89f-0c3d-45a5-ae8f-fdb7bb6edefd.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>최후의<br>금빛아이</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>알깨<br>새몽</h6></div>
+				
+				</div></a>
+			</div>
+<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/772243/thumbnail/thumbnail_IMAG10_03d8fba5-3abb-4801-ac40-f065a983a484.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>모스크바의<br>여명</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6><br>황장미<br>이샨오</h6></div>
+					
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/597478/thumbnail/thumbnail_IMAG10_223dbebf-64c9-4de2-804d-0389d5c11d73.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>평범한<br>8반</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>영파카</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/738809/thumbnail/thumbnail_IMAG10_b405b08b-cb48-47ee-b6b7-10ecade65033.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>아는<br>여자애</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>허니비</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/758667/thumbnail/thumbnail_IMAG10_1c4acfac-0d64-4177-872c-477afc640a18.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>사랑의헌<br>옷수거함</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>고잉</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/764041/thumbnail/thumbnail_IMAG10_f4bfa353-9736-49e6-af74-8aae83bfc74e.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>바로<br>보지않는</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>지민</h6></div>
+
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/761461/thumbnail/thumbnail_IMAG10_bc1bf7e1-0a45-4b65-8484-4e1683c57baa.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>순정말고<br>순종</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>슈안</h6></div>
+
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/770656/thumbnail/thumbnail_IMAG10_6c736096-e0a0-4fd0-bc3f-9b8a283ce273.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>장난감</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>배사과</h6></div>
+										
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/772725/thumbnail/thumbnail_IMAG10_e78a5124-b03d-4a2b-8295-7549b38f99cf.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>물어보는<br>사이</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>성은</h6></div>
+				
+				</div></a>
+			</div>
+<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/687915/thumbnail/thumbnail_IMAG10_e03acc4a-a1ce-4ebc-a021-e3cc07af5f20.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>꿈의기업</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>문지현</h6></div>
+					
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/767919/thumbnail/thumbnail_IMAG10_261a0e42-cb4f-41e1-afcc-43eab555530d.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>야생천사<br>보호구역</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>루시드</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/768433/thumbnail/thumbnail_IMAG10_5b1147a6-e70e-4229-b44d-9a20aeaa1829.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>브랜든</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>d몬</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/766575/thumbnail/thumbnail_IMAG10_ba9c6a52-98bc-4d7c-924c-7cb930e8fe6a.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>착한건<br>돈이된다</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>유성연</h6></div>
+
+				</div></a>
+			</div>
+		<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/762237/thumbnail/thumbnail_IMAG10_55ccac22-dba5-4d20-8ad0-fb7610fe8ea8.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>선배,그<br>립스틱바<br>르지마요</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>카페라떼<br>JINHA</h6></div>
+
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/747273/thumbnail/thumbnail_IMAG10_ea1ab128-8c3f-489d-aecd-c8ce02eac15b.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>침범</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>공세리<br>영영이</h6></div>
+
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/752350/thumbnail/thumbnail_IMAG10_337ea019-5c3f-403e-a112-9244c8116c0e.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>왕따협상</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>아이아리</h6></div>
+										
+				</div></a>
+			</div>
+			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/765776/thumbnail/thumbnail_IMAG10_93784ff4-28e7-4848-b0e4-ae1adbd59a5a.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>마지막<br>지수</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>에리카<br>채나라</h6></div>
+				
+				</div></a>
+			</div>
+<div class="col-4 col-sm-3 col-md-3 col-lg-2">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/752413/thumbnail/thumbnail_IMAG10_86185923-7827-4354-9f72-a05133fbd92e.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>이중첩자 </h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>피숙혜,하연<br>옆집찰스</h6></div>
+					
+				</div></a>
+			</div>
+		</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+<!-- 
+처음보는 웹툰 -->
+<div class="title">
+<h6>미처 못보신 작품들이에요</h6>
+<h2>처음보는 웹툰</h2>
+</div>
+<div class="over">
+		<div class="inover">
+			
+			<a href="#" class="nc_toon">
+			<div class="no_con">
+			<img class="no_toon-img" src="https://image-comic.pstatic.net/webtoon/774302/1/20210613194946_0c6e4aec27efd19b7729245d8e1cc0b3_IMAG01_1.jpg" width="100%">
+			</div>	
+				<div class="nt-ex">
+				
+					<div class="nt-name"><h4>하루의<br>하루</h4><h6>김이랑</h6><br><h5>1화. 오하루</h5></div>
+					<div class="nt-bottom">			
+					<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/774302/thumbnail/thumbnail_IMAG10_30301e27-fdd2-4a62-b928-ba1bc599f91a.jpg" alt="Webtoom" width="100%"></div>
+				</div></a>
+
+			<a href="#" class="nc_toon">
+			<div class="no_con">
+			<img class="no_toon-img" src="https://image-comic.pstatic.net/webtoon/774040/1/20210608170801_f94431d2f84fdc219c07ff18688e7c9a_IMAG01_1.jpg" alt="Webtoom" width="100%">
+			</div>	
+				<div class="nt-ex">
+					<div class="nt-name"><h4>또다시,<br>계약부부</h4><h6>설우희<br>제제</h6><br><h5>1화.남편과의재회</h5></div>
+					<div class="nt-bottom">			
+					<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/774040/thumbnail/thumbnail_IMAG10_7cb6588b-7a7b-41cc-9275-3a2e65bd593d.jpg" alt="Webtoom" width="100%"></div>
+				</div></a>
+
+
+				<a href="#" class="nc_toon">
+			<div class="no_con">
+			<img class="no_toon-img" src="https://image-comic.pstatic.net/webtoon/772725/2/20210603180024_c866acd15be0ba46b30739a4103a25a5_IMAG01_1.jpg" width="100%">
+			</div>	
+				<div class="nt-ex">
+				
+					<div class="nt-name"><h4>물어보는<br>사이</h4><h6>성은</h6><br><h5>2화</h5></div>
+					<div class="nt-bottom">			
+					<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/772725/thumbnail/thumbnail_IMAG10_e78a5124-b03d-4a2b-8295-7549b38f99cf.jpg" alt="Webtoom" width="100%"></div>
+				</div></a>
+
+				<a href="#" class="nc_toon">
+			<div class="no_con">
+			<img class="no_toon-img" src="https://image-comic.pstatic.net/webtoon/770656/2/20210602175729_b4603e675e3621f18451cfe86db34963_IMAG01_1.jpg" width="100%">
+			</div>	
+				<div class="nt-ex">
+					<div class="nt-name"><h4>장난감</h4><h6>배사과</h6><br><h5>2화</h5></div>
+					<div class="nt-bottom">			
+					<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/770656/thumbnail/thumbnail_IMAG10_6c736096-e0a0-4fd0-bc3f-9b8a283ce273.jpg" alt="Webtoom" width="100%"></div>
+				</div></a>
+				<a href="#" class="nc_toon">
+			<div class="no_con">
+			<img class="no_toon-img" src="https://image-comic.pstatic.net/webtoon/764041/5/20210518162416_b2e94152053f2cf637b12234179df486_IMAG01_1.jpg" width="100%">
+			</div>	
+				<div class="nt-ex">
+				
+					<div class="nt-name"><h4>바로<br>보지않는</h4><h6>지민</h6><br><h5>5화</h5></div>
+					<div class="nt-bottom">			
+					<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/764041/thumbnail/thumbnail_IMAG10_f4bfa353-9736-49e6-af74-8aae83bfc74e.jpg" alt="Webtoom" width="100%"></div>
+				</div></a>
+				<a href="#" class="nc_toon">
+			<div class="no_con">
+			<img class="no_toon-img" src="https://image-comic.pstatic.net/webtoon/772243/5/20210526160027_5a6e882839549849d6a7e08bc04d8a52_IMAG01_2.jpg" width="100%">
+			</div>	
+				<div class="nt-ex">
+				
+					<div class="nt-name"><h4>모스크바<br>의 여명</h4><h6>황장미<br>이샨오</h6><br><h5>5화</h5></div>
+					<div class="nt-bottom">			
+					<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/772243/thumbnail/thumbnail_IMAG10_03d8fba5-3abb-4801-ac40-f065a983a484.jpg" alt="Webtoom" width="100%"></div>
+				</div></a>
+				<a href="#" class="nc_toon">
+			<div class="no_con">
+			<img class="no_toon-img" src="https://image-comic.pstatic.net/webtoon/772734/5/20210523102158_d5ca1fe8a332ffaee6c235eef50b39c1_IMAG01_1.jpg" width="100%">
+			</div>	
+				<div class="nt-ex">
+				
+					<div class="nt-name"><h4>최후의<br>금빛아이</h4><h6>일깨<br>세몽</h6><br><h5>4화</h5></div>
+					<div class="nt-bottom">			
+					<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/772734/thumbnail/thumbnail_IMAG10_845ee89f-0c3d-45a5-ae8f-fdb7bb6edefd.jpg" alt="Webtoom" width="100%"></div>
+				</div></a>
+				<a href="#" class="nc_toon">
+			<div class="no_con">
+			<img class="no_toon-img" src="https://image-comic.pstatic.net/webtoon/759940/30/20210508104041_2251ba13725b409297ff0c5a6d4e9712_IMAG01_1.jpg" width="100%">
+			</div>	
+				<div class="nt-ex">
+				
+					<div class="nt-name"><h4>만렙돌파</h4><h6>성불예정<br>홍실/미노</h6><br><h5>30화. 추격전</h5></div>
+					<div class="nt-bottom">			
+					<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/759940/thumbnail/thumbnail_IMAG10_7abdbbb8-b81c-46ec-8a35-3a9730fc02fa.jpg" alt="Webtoom" width="100%"></div>
+				</div></a>
+				<a href="#" class="nc_toon">
+			<div class="no_con">
+			<img class="no_toon-img" src="https://image-comic.pstatic.net/webtoon/739115/64/20210521123344_fd776d13e167431b1577d16d8e28c96f_IMAG01_2.jpg" width="100%">
+			</div>	
+				<div class="nt-ex">
+				
+					<div class="nt-name"><h4>앵무살수</h4><h6>김성진</h6><br><h5>시즌2 5화</h5></div>
+					<div class="nt-bottom">			
+					<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/739115/thumbnail/thumbnail_IMAG10_a206c88b-0b8c-461d-b9e0-76ae8f6ee8ff.jpg" alt="Webtoom" width="100%"></div>
+				</div></a>	
+
+			</div>		
+</div>
+<div class="line"></div>
+
+<div class="small">
+			<div class="sm"><a href="https://policy.naver.com/rules/service.html">이용약관</a></div>|
+			<div class="sm"><a href="https://policy.naver.com/rules/privacy.html">개인정보처리방침</a></div>|
+			<div class="sm"><a href="https://policy.naver.com/rules/disclaimer.html">책임의 한계와 법적고지</a></div>|
+			<div class="sm"><a href="https://help.naver.com/support/home.help?serviceNo=799">고객센터</a></div>|
+			<div class="sm"><a href="https://comic.naver.com/business/proposalGuide.nhn#ad">웹툰광고문의</a></div>
+			<br><br>본 콘텐츠의 저작권은 저자 또는 제공처에 있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 법적 책임을 질 수 있습니다.
+	</div>
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+</body>
+</html>

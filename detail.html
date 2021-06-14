@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NAVER WEBTOON</title>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+	<style>
+		body {
+			font-family: 'Nanum Gothic', sans-serif;
+			box-sizing: border-box;
+		}
+		body a {
+			text-decoration: none;
+		}
+
+		/*네비바*/
+		.nav {
+			display: inline-block;
+			padding-left: 11vw;
+			padding-right: 11vw;
+			margin-top: -8px;
+			margin-bottom: -8px;
+			font-size: 17px;
+			font-weight: 700;
+			color: #ffffff;
+			background-color: #00d564;
+		}
+		.logo {
+			display: inline-block;
+			padding-top: 3%;
+		}
+		.logo h1{
+			color: #fffffc;
+			font-size: 20px;
+			font-weight: 900;
+			line-height: 1;
+			text-shadow: -1px 0 #ffffff, 1px 0 #ffffff;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.logo p {
+			margin-top: 2%;
+			color: #fffffc;
+			font-size: 30px;
+			font-weight: 700;
+			line-height: 1;
+			display: inline-block;
+			vertical-align: middle;	
+		}
+
+		.nav-link {
+			padding-left: auto;
+			padding-right: auto;
+			text-align: center;
+		}
+		.input-group {
+			margin-left: 11%;
+			width: 30%;
+		}
+	
+		/*케러셀*/
+		.carousel-item {
+			text-align: left;
+		}
+		.sun {
+			display: block;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+		.ad {
+			margin-left: 11%;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.adhelp {
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+		}
+		.ad h2 {
+			font-weight: 900;
+			font-size: 1.2vw;
+			color: #dbdbdb;
+			line-height:1;
+			margin-bottom: 5px;
+		}
+		.ad h3 {
+			line-height: 0.5;
+			font-weight: 700;
+			text-shadow: : -1px 0 #e8e8e8, 1px 0 #e8e8e8;	
+			font-size: 4vw;
+			color: #e8e8e8;
+			line-height:1;
+			margin-bottom: 5vw;
+		}
+		.ad_p {
+
+			height: 3vw;
+		}
+		.ad h6 {
+			font-weight: 100;
+			font-size: 1vw;
+			color: #dbdbdb;
+			line-height:1.1;
+		}
+		.carousel-inner .carousel-item {
+			height: 35vw;
+			background-size: cover;
+		}
+		.first_car .carousel-item:nth-child(1) {
+			background-image: url("https://cdnweb01.wikitree.co.kr/webdata/editor/202009/29/img_20200929085243_70c504d3.webp");
+			background-position: center top;
+		}
+		.first_car .carousel-item:nth-child(2) {
+			background-image: url("http://www.socialvalue.kr/news/photo/202105/604200_25715_5015.jpg");
+			background-position: center top;
+		}
+		/*콘텐츠*/
+		.toon {
+			border-radius: 0.3vw;	
+			display: block;
+			box-shadow : 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+		}
+
+		.toon-img { 
+			border-top-right-radius: 0.3vw;
+			border-top-left-radius: 0.3vw;		
+			display: block;
+		}
+		.toon-p {
+			background-color: #ffffff;
+			height: 7vw;
+			white-space: nowrap;
+			overflow: hidden;
+			padding-top: 0.5vw;
+			padding-bottom: 3%;
+			padding-left: 3%;
+			margin-bottom: 20px;
+		}
+		.t-help {
+			height: 3vw;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.t-name {
+			margin-left: 12%;
+			height: 3vw;
+			margin-right: 15px;
+			display: inline-block;
+			vertical-align: top;
+			width: 50%;
+		}
+		.t-artist {
+			height: 3vw;
+			vertical-align: top;
+			display: inline-block;
+			width: 40%;
+		}
+
+
+		.t-name h4 {
+			display: inline-block;
+			vertical-align: bottom;
+			font-weight: 900;
+			line-height: 1.2;
+			font-size: 1.5vw;
+			color: #848484;
+			margin-bottom: 10px;
+		}
+		.t-artist h6 {
+			display: inline-block;
+			vertical-align: bottom;
+			font-weight: 100;
+			line-height: 1.2;
+			margin-bottom: 10px;
+			font-size: 0.8vw;
+			color: #848484;
+		}
+		.do_con .toon-p {
+			height: 6vw;
+		}
+		.do_con .t-help {
+			height: 3vw;
+		}
+		.do_con .t-name {
+			margin-left: 1%;
+			height: 3vw;
+			margin-right: 15px;
+			display: inline-block;
+			vertical-align: top;
+			width: 50%;
+		}
+		.do_con .t-artist {
+			height: 3vw;
+		}
+		.do_con .t-name h4 {
+
+			font-size: 1vw;
+			margin-left: -10%;
+		}
+		.do_con .t-artist h6 {
+			font-size: 0.6vw;
+		}
+		.over {
+
+			padding-top: 1vw;
+			margin-left: auto;
+			margin-right: auto;
+			width: 78%;
+			overflow-x: scroll;
+		
+		}
+		.over::-webkit-scrollbar{ 
+			display: none; 
+		}
+
+		.inover{
+			white-space: nowrap;
+		}
+		.con {
+			margin-right: 16px;
+			width: 17.6%;
+			display: inline-block;
+		}
+		.con:hover {
+			width: 19%;
+		}
+		.do_con {
+			margin-right: 16px;
+			width: 11.8%;
+			display: inline-block;
+		}
+		.do_con:hover {
+			width: 13%;
+		}
+		.toon_img { 
+			border-top-right-radius: 0.3vw;
+			border-top-left-radius: 0.3vw;		
+			display: inline-block;
+		}
+		.no_toon-img { 
+			border-radius: 0.3vw;		
+			display: inline-block;
+		}
+		.nt_help {
+			height: 10vw;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.nc_toon {
+			margin-right: 16px;
+			width: 17.6%;
+			display: inline-block;
+			object-fit: cover;
+		}
+		.nc_toon:hover {
+			width: 18.3%;
+		}
+		.no_con {	
+			object-fit:cover
+			width: 100%;
+			display: block;
+			margin-bottom: 16px;
+			box-shadow : 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+		}
+		.nt-ex {
+			overflow: hidden;
+			display: block;
+			width: 100%;
+			box-shadow : 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+		}
+		.nt-bottom {
+			vertical-align: 0%;
+			width: 30%;
+			display: inline-block;
+		}
+		.nt-bottom img { 
+			border-bottom-right-radius: 0.3vw;
+			border-bottom-left-radius: 0.3vw;		
+		}
+		.nt-name {
+			margin-top: 1vw;
+			width: 140px;
+			display: inline-block;
+			margin-left: 0.5vw;
+			
+		}
+		.nt-name h4 {
+			display: inline-block;
+			font-weight: 900;
+			line-height: 1;
+			font-size: 1.5vw;
+			color: #848484;
+		}
+		.nt-name h6 {
+
+			margin-top: 0.3vw;
+			margin-left: 0.35vw;
+			display: inline-block;	
+			font-weight: 100;
+			line-height: 1;
+			font-size: 0.8vw;
+			color: #848484;
+
+		}
+		.nt-name h5 {
+
+			display: inline-block;
+			font-weight: 100;
+			line-height: 1;
+			font-size: 0.6vw;
+			color: #848484;
+			margin-right: 200px;
+
+		}
+		.title {
+			margin-left: 11%;
+		}
+		.title h6 {
+			margin-top: 5vw;
+			font-weight: 100;
+			line-height: 0;
+			font-size: 0.8em;
+			color: #81c69e;
+		}
+		.title h2 {
+			margin-top: 10px;
+			margin-bottom: 1vw;
+			font-weight: 900;
+			line-height: 1;
+			font-size: 1.7em;
+			color: #00d564;
+		}
+		.mid {
+			margin-top: 7vw;
+			margin-bottom: 10vw;
+			text-align: center;
+			font-weight: 100;
+			line-height: 0;
+			font-size: 1.8em;
+			color: #848484;
+		}
+	/*	아래캐러셀*/ 
+		.carousel-inner .carousel-item {
+			height: 35vw;
+			background-size: cover;
+		}
+		.bottom_car_3 .carousel-item:nth-child(1) {
+			background-image: url("https://cdnweb01.wikitree.co.kr/webdata/editor/202009/29/img_20200929085243_70c504d3.webp");
+			background-position: center top;
+		}
+		.bottom_car_3 .carousel-item:nth-child(2) {
+			background-image: url("https://i.ytimg.com/vi/yzi9h0JWq4s/maxresdefault.jpg");
+			background-position: center top;
+		}
+		.bottom_car_3 .carousel-item:nth-child(3) {
+			background-image: url("https://mblogthumb-phinf.pstatic.net/MjAyMDA5MjlfMTQ1/MDAxNjAxMzY0NjIwMzAw.IhOIxYokFskEviHE_nHnKf2FEKurCpjRCOhyv2058i4g.kWC28fjZEJZJ6t39dOCOrEOrhggeB6sLEG1923WMycwg.PNG.deancrush/012.png?type=w800");
+			background-position: center top;
+		}
+		.bot_car_con {
+			margin-left: 11%;
+		}
+		.bot_car_con h2 {
+			padding-top: 2vw;
+			font-weight: 900;
+			font-size: 1vw;
+			color: #dbdbdb;
+			line-height:1;
+			margin-bottom: 8px;
+		}
+		.bot_car_con h3 {
+			line-height: 0.5;
+			font-weight: 700;
+			text-shadow: : -1px 0 #e8e8e8, 1px 0 #e8e8e8;	
+			font-size: 3vw;
+			color: #e8e8e8;
+			line-height:1;
+			margin-bottom: 0.1vw;
+			display: inline-block;
+		}
+		.bot_car_con h1 {
+			font-weight: 100;
+			font-size: 1vw;
+			color: #dbdbdb;
+			line-height:1.1;
+			display: inline-block;	
+			margin-left: 1vw;
+			margin-bottom: 2vw;
+		}
+		.small {
+			margin-top: 1vw;
+			font-size: 0.8vw;
+			line-height: 1;
+			text-align: center;
+			margin-bottom: 5vw;
+			color: #9a9a9a;
+		}
+		.small a {
+			text-decoration: none;
+			color: #9a9a9a;
+		}
+		.sm {
+			display: inline-block;
+			margin-left: 10px;
+			margin-right: 10px;
+			text-decoration: none;
+		}	
+		.line {
+			margin-top: 3vw;
+			background-color: #878d91;
+			margin-left: 11%;
+			margin-right: 11%;
+			height : 1px;
+		}
+		}
+	</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid nav">
+  	<div class="help"></div>
+    <a class="navbar-brand" href="./index.html">
+    	<div class="logo">
+		<h1>NAVER</h1><p> 만화</p>
+		</div></a>
+
+    <div class="input-group">
+      <input type="text" class="form-control me-2" type="search" placeholder="찾는 작품이 있으신가요?" aria-label="Search">
+    </div>
+
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="rig">
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        
+        <a class="nav-link" aria-current="page" href="./index.html">홈</a>
+        <a class="nav-link l">|</a>
+        <a class="nav-link active" href="./dailypage.html">연재만화</a>
+        <a class="nav-link l">|</a>
+        <a class="nav-link" href="#">완결만화</a>
+        <a class="nav-link l">|</a>
+        <a class="nav-link" href="#">베스트도전</a>
+        <a class="nav-link l">|</a>
+        <a class="nav-link" href="#">도전만화</a>
+     	 </div>
+    	</div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+	<div id="carouselExampleCaptions" class="carousel slide first_car" data-bs-ride="carousel">
+  <div class="carousel-indicators first_car">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
+  
+  <div class="carousel-inner">
+   <div class="carousel-item active">
+   		<a href="./detail.html">
+   		<div class="sun">
+    	 <div class="adhelp"></div><div class="ad">
+	      <h2>월요웹툰</h2>
+	      <h3>신의탑</h3>
+	      <div class="ad_p">
+	      <h6>자신의 모든 것이었던 소녀를 쫓아 탑에 들어온 소년<br>
+			그리고 그런 소년을 시험하는 탑</h6></div>
+	  </div></div></a>
+    </div>
+    
+    <div class="carousel-item">
+    	<a href="./detail.html">
+    	<div class="sun">	
+    	 <div class="adhelp"></div><div class="ad">
+	      <h2>SIU작가</h2>
+	      <h3>신의탑</h3>
+	       <div class="ad_p">
+	      <h6>장르 | 스토리, 판타지 / 제한 | 12세 이용가</h6></div>
+	  </div></div></a>
+    
+    </div>
+    
+    </div>
+    
+    </div>
+  
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+<div class="title">
+<h6>오늘의 새로운 이야기</h6>
+<h2>최신화부터 보기</h2>
+</div>
+<div class="over">
+		<div class="inover">
+		<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/492/thumbnail_202x120_20716d8b-ce05-4e9a-8734-190efcf605a8.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>3부 73화</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6></h6></div>
+
+				</div></a>
+			</div>
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/491/thumbnail_202x120_382ed5dc-53ee-4afd-b6ad-c74993afe254.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>3부 72화</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6></h6></div>
+
+				</div></a>
+			</div>
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/490/thumbnail_202x120_dd523cde-6348-477b-883c-d1791391340d.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>3부 71화</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6></h6></div>
+
+				</div></a>
+			</div>
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/489/thumbnail_202x120_890b8ee4-74c5-440b-b697-209f52eefc22.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>3부 70화</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6></h6></div>
+
+				</div></a>
+			</div>
+			
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/488/thumbnail_202x120_74f99d27-0bc1-4ecb-87e9-cec78ed44aa7.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>3부 69화</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6></h6></div>
+
+				</div></a>
+			</div>
+			
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/487/thumbnail_202x120_fda662f6-b6db-4861-a162-532dc4be8529.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>3부 68화</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6></h6></div>
+										
+				</div></a>
+			</div>
+			
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/486/thumbnail_202x120_2edf7f5c-3818-4e7f-9db1-6aab1d27f9e4.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>3부 67화</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6></h6></div>
+				
+				</div></a>
+			</div>
+
+			<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/485/thumbnail_202x120_dab520b1-4543-4ce0-8078-f6ef3b5a835d.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>3부 66화</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6></h6></div>
+					
+				</div></a>
+			</div>
+		</div>
+	</div>	
+
+
+
+
+
+
+<div class="title">
+<h6>이 웹툰을 재미있게 보셨다면?</h6>
+<h2>맞춤추천 웹툰</h2>
+</div>
+<div id="carouselExampleInterval" class="carousel slide  bottom_car_3" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
+   <div class="carousel-inner">
+   <div class="carousel-item active">
+   		<a href="./detail.html">
+   		<div class="sun">
+   			<div class="bot_car_con">
+        <h2>SIU작가의 다른 활동이 궁금하신가요?</h2>
+        <h3>작가의 다른 활동들</h3><h1>작가 | SIU</h1><br>	
+        
+       		<div class="con">
+			<a href="./detail.html" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/thumbnail/thumbnail_IMAG10_9a752bec-9ebd-4214-9449-28cf4defc650.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>신의탑</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>SIU</h6></div>
+				</div></a>
+			</div>		
+     		 </div>
+  		</div></a>
+    		</div>
+
+	
+    
+    <div class="carousel-item">
+   		<a href="#">
+   		<div class="sun">
+   			<div class="bot_car_con">
+        <h2>이 작품의 독자들이 좋아하는 작품</h2>
+        <h3>20대 실시간 인기만화</h3><h1>성별 | 남성</h1><br>	
+        
+        <div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG10_a2297504-4912-4c7e-a5a8-524d6fc77103.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>참교육</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>채용택<br>한가람</h6></div>
+				</div></a>
+			</div>
+		<div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/602910/thumbnail/thumbnail_IMAG10_8914c548-d69d-45d6-8008-bbc129e637c2.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>윈드<br>브레이커</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>조용택</h6></div>
+				</div></a>
+			</div>
+		<div class="con">
+			<a href="./detail.html" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/thumbnail/thumbnail_IMAG10_9a752bec-9ebd-4214-9449-28cf4defc650.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>신의탑</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>SIU</h6></div>
+				</div></a>
+			</div>		
+      </div>
+  </div></a>
+    </div>
+
+    <div class="carousel-item">
+   		<a href="https://comic.naver.com/webtoon/list.nhn?titleId=183559&weekday=mon">
+   		<div class="sun">
+   			<div class="bot_car_con">
+        <h2>같은 장르의 인기작들! </h2>
+        <h3>현실과는 다른 세상</h3><h1>장르 | 판타지</h1><br>	
+        
+        <div class="con">
+			<a href="#" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/318995/thumbnail/title_thumbnail_20110407182655_t83x90.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>갓오브<br>하이스쿨</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>박용제</h6></div>
+				</div></a>
+			</div>
+		<div class="con">
+			<a href="https://comic.naver.com/artistTitle.nhn?artistId=24" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/754875/thumbnail/thumbnail_IMAG10_de87cbe7-e6f8-4207-9c9b-0b214e99d875.JPG" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>아이레</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>설이<br>team설이</h6></div>
+				</div></a>
+			</div>
+		<div class="con">
+			<a href="https://comic.naver.com/artistTitle.nhn?artistId=24" class="toon">
+				<img class="toon-img" src="https://shared-comic.pstatic.net/thumb/webtoon/747271/thumbnail/thumbnail_IMAG10_107ce0d9-e0a3-4846-b7e1-8597fa4e980a.jpg" alt="Webtoom" width="100%">
+				<div class="toon-p">
+
+					<div class="t-name">
+					<div class="t-help"></div>
+					<h4>나노마신</h4></div>
+					<div class="t-artist">
+					<div class="t-help"></div>
+					<h6>현절무<br>금강불괴</h6></div>
+				</div></a>
+			</div>		
+      </div>
+  </div></a>
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<br>
+
+
+<div class="line"></div>
+
+<div class="small">
+			<div class="sm"><a href="https://policy.naver.com/rules/service.html">이용약관</a></div>|
+			<div class="sm"><a href="https://policy.naver.com/rules/privacy.html">개인정보처리방침</a></div>|
+			<div class="sm"><a href="https://policy.naver.com/rules/disclaimer.html">책임의 한계와 법적고지</a></div>|
+			<div class="sm"><a href="https://help.naver.com/support/home.help?serviceNo=799">고객센터</a></div>|
+			<div class="sm"><a href="https://comic.naver.com/business/proposalGuide.nhn#ad">웹툰광고문의</a></div>
+			<br><br>본 콘텐츠의 저작권은 저자 또는 제공처에 있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 법적 책임을 질 수 있습니다.
+	</div>
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+</body>
+</html>
